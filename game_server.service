@@ -1,0 +1,15 @@
+[Unit]
+Description=Godot Tug-of-War Game Server (WebSocket host)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/test-project
+ExecStart=/usr/local/bin/godot --headless --path /opt/test-project -- --server
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

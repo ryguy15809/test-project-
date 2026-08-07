@@ -1,132 +1,292 @@
 [gd_scene format=3 uid="uid://wds8da3cg13h"]
 
 [ext_resource type="Script" uid="uid://c4hnkpguhmgv0" path="res://node_2d.gd" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://dwmra0t3rctq1" path="res://rope1.png" id="2_0hol4"]
+[ext_resource type="Texture2D" uid="uid://chn1jmkru52lr" path="res://cursor1.png" id="3_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://cqbcs2ub7xd6b" path="res://cursor2.png" id="4_kdubu"]
 
-[node name="Node2D" type="Node2D" unique_id=1246444243]
+[node name="Node2D" type="Node2D" unique_id=575133644]
 script = ExtResource("1_wtcfe")
 
-[node name="Node2D#NetworkManager" type="Node2D" parent="." unique_id=1246444244]
+[node name="NetworkManager" type="Node2D" parent="." unique_id=1811784214]
 
-[node name="NetworkManager#Lobby" type="Node2D" parent="." unique_id=1246444245]
+[node name="Lobby" type="Node2D" parent="NetworkManager" unique_id=1806416850]
 
-[node name="NetworkManager#OneOnOneMatch" type="Node2D" parent="." unique_id=1246444246]
+[node name="Players" type="Node2D" parent="." unique_id=417774086]
 
-[node name="OneOnOneMatch#PlayerA" type="Node2D" parent="." unique_id=1246444247]
+[node name="LocalPlayer" type="Node2D" parent="Players" unique_id=1933094653]
 
-[node name="OneOnOneMatch#PlayerB" type="Node2D" parent="." unique_id=1246444248]
+[node name="RemotePlayers" type="Node2D" parent="Players" unique_id=1764934206]
 
-[node name="NetworkManager#FreeForAllMatch" type="Node2D" parent="." unique_id=1246444249]
+[node name="UI" type="CanvasLayer" parent="." unique_id=2124526694]
 
-[node name="FreeForAllMatch#PlayerContainer" type="Node2D" parent="." unique_id=1246444250]
-
-[node name="FreeForAllMatch#RemotePlayerContainer" type="Node2D" parent="." unique_id=1246444251]
-
-[node name="Node2D#Players" type="Node2D" parent="." unique_id=1246444252]
-
-[node name="Players#LocalPlayer" type="Node2D" parent="." unique_id=1246444253]
-
-[node name="Players#RemotePlayers" type="Node2D" parent="." unique_id=1246444254]
-
-[node name="Node2D#UI" type="CanvasLayer" parent="." unique_id=1246444255]
-
-[node name="UI#MainPage" type="Control" parent="." unique_id=1246444256]
+[node name="MainPage" type="Control" parent="UI" unique_id=1872981952]
+visible = false
 layout_mode = 3
-anchors_preset = 0
-
-[node name="UI_MainPage#MainBackgroundLeft" type="ColorRect" parent="." unique_id=1246444257]
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-color = Color(0, 0, 1, 1)
-
-[node name="UI_MainPage#MainBackgroundRight" type="ColorRect" parent="." unique_id=1246444258]
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0, 1)
 
-[node name="UI_MainPage#MainLogo" type="Label" parent="." unique_id=1246444259]
+[node name="MainBackgroundLeft" type="ColorRect" parent="UI/MainPage" unique_id=1802756473]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.68664604, 0.14573133, 0.17666581, 1)
+
+[node name="MainBackgroundRight" type="ColorRect" parent="UI/MainPage" unique_id=1151432663]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.187718, 0.39934263, 0.76871437, 1)
+
+[node name="MainLogo" type="Label" parent="UI/MainPage" unique_id=1453329230]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 50.0
+offset_right = 768.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
 text = "Tug of War"
+horizontal_alignment = 1
 
-[node name="UI_MainPage#MainButtons" type="VBoxContainer" parent="." unique_id=1246444260]
+[node name="BtnOneOnOne" type="Button" parent="UI/MainPage" unique_id=2103685622]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 244.0
+offset_right = 692.0
+offset_bottom = 315.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "1v1"
 
-[node name="UI_MainPage_MainButtons#BtnOneOnOne" type="Button" parent="." unique_id=1246444261]
-text = "1v1 Mode"
+[node name="BtnCoop" type="Button" parent="UI/MainPage" unique_id=1031365989]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 329.0
+offset_right = 692.0
+offset_bottom = 400.0
+theme_override_font_sizes/font_size = 44
+text = "Co-op"
 
-[node name="UI_MainPage_MainButtons#BtnCoop" type="Button" parent="." unique_id=1246444262]
-text = "Co-op Mode"
+[node name="BtnInstructions" type="Button" parent="UI/MainPage" unique_id=1352225817]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 531.0
+offset_right = 696.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 30
+text = "Instructions
+"
 
-[node name="UI_MainPage_MainButtons#BtnOptions" type="Button" parent="." unique_id=1246444263]
-text = "Options"
+[node name="BtnSingleplayer" type="Button" parent="UI/MainPage" unique_id=63838428]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 413.0
+offset_right = 713.0
+offset_bottom = 484.0
+theme_override_font_sizes/font_size = 44
+text = "Singleplayer"
 
-[node name="UI#LoadingPage" type="Control" parent="." unique_id=1246444264]
+[node name="LoadingPage" type="Control" parent="UI" unique_id=287395655]
 visible = false
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="UI_LoadingPage#LoadingBackground" type="TextureRect" parent="." unique_id=1246444265]
+[node name="LoadingBackgroundLeft" type="ColorRect" parent="UI/LoadingPage" unique_id=1133674207]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.68664604, 0.14573133, 0.17666581, 1)
 
-[node name="UI_LoadingPage#LoadingText" type="Label" parent="." unique_id=1246444266]
+[node name="LoadingBackgroundRight" type="ColorRect" parent="UI/LoadingPage" unique_id=2099771563]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.187718, 0.39934263, 0.76871437, 1)
+
+[node name="LoadingText" type="Label" parent="UI/LoadingPage" unique_id=85363548]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 226.0
+offset_right = 716.0
+offset_bottom = 309.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
 text = "Loading..."
 
-[node name="UI_LoadingPage#LoadingBar" type="ProgressBar" parent="." unique_id=1246444267]
+[node name="LoadingBar" type="ProgressBar" parent="UI/LoadingPage" unique_id=132121367]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 356.0
+offset_right = 762.0
+offset_bottom = 415.0
+theme_override_font_sizes/font_size = 40
 
-[node name="UI#BattleOneOnOnePage" type="Control" parent="." unique_id=1246444268]
+[node name="Button" type="Button" parent="UI/LoadingPage" unique_id=1174686458]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 574.0
+offset_right = 635.0
+offset_bottom = 613.0
+text = "Exit
+"
+
+[node name="Label" type="Label" parent="UI/LoadingPage" unique_id=1794897776]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 332.0
+offset_right = 528.0
+offset_bottom = 355.0
+text = "Players found 1/2"
+
+[node name="BattleOneOnOnePage" type="Control" parent="UI" unique_id=634685410]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OneOnOneBackgroundLeft" type="ColorRect" parent="UI/BattleOneOnOnePage" unique_id=363032353]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.68664604, 0.14573133, 0.17666581, 1)
+
+[node name="OneOnOneBackgroundRight" type="ColorRect" parent="UI/BattleOneOnOnePage" unique_id=1184760819]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.187718, 0.39934263, 0.76871437, 1)
+
+[node name="OneOnOneRopes" type="Node2D" parent="UI/BattleOneOnOnePage" unique_id=166905541]
+
+[node name="Rope1" type="Sprite2D" parent="UI/BattleOneOnOnePage/OneOnOneRopes" unique_id=558316322]
+position = Vector2(598, 340.99997)
+scale = Vector2(0.28651568, 0.23750018)
+texture = ExtResource("2_0hol4")
+
+[node name="Cursor1" type="Sprite2D" parent="UI/BattleOneOnOnePage/OneOnOneRopes" unique_id=1995383970]
+position = Vector2(850.00006, 373)
+scale = Vector2(0.106981985, 0.106981985)
+texture = ExtResource("3_q6r6c")
+
+[node name="Cursor2" type="Sprite2D" parent="UI/BattleOneOnOnePage/OneOnOneRopes" unique_id=1100076266]
+position = Vector2(303.99988, 372)
+scale = Vector2(0.10641902, 0.10641902)
+texture = ExtResource("4_kdubu")
+
+[node name="OneOnOneMatch" type="Node2D" parent="UI/BattleOneOnOnePage" unique_id=1207817726]
+
+[node name="PlayerA" type="Node2D" parent="UI/BattleOneOnOnePage/OneOnOneMatch" unique_id=301533593]
+
+[node name="PlayerB" type="Node2D" parent="UI/BattleOneOnOnePage/OneOnOneMatch" unique_id=1621967965]
+
+[node name="OneOnOnePlayer1Score" type="Label" parent="UI/BattleOneOnOnePage" unique_id=175887646]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 3.0
+offset_right = 91.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Red: 0"
+
+[node name="OneOnOnePlayer2Score" type="Label" parent="UI/BattleOneOnOnePage" unique_id=836845775]
+layout_mode = 0
+offset_left = 1005.0
+offset_top = 7.0
+offset_right = 1135.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Blue: 0"
+
+[node name="Countdown" type="Label" parent="UI/BattleOneOnOnePage" unique_id=1370122555]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 189.0
+offset_right = 595.0
+offset_bottom = 272.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "3"
+
+[node name="BattleCoopPage" type="Control" parent="UI" unique_id=66248515]
 visible = false
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="UI_BattleOneOnOnePage#BattleOneOnOneBackground" type="TextureRect" parent="." unique_id=1246444269]
+[node name="CoopBackgroundLeft" type="ColorRect" parent="UI/BattleCoopPage" unique_id=1386873766]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.68664604, 0.14573133, 0.17666581, 1)
 
-[node name="UI_BattleOneOnOnePage#OneOnOneRopeContainer" type="Node2D" parent="." unique_id=1246444270]
+[node name="CoopBackgroundRight" type="ColorRect" parent="UI/BattleCoopPage" unique_id=905635412]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.187718, 0.39934263, 0.76871437, 1)
 
-[node name="UI_BattleOneOnOnePage_OneOnOneRopeContainer#OneOnOneRopeCenter" type="TextureRect" parent="." unique_id=1246444271]
+[node name="CoopRopeContainer" type="Node2D" parent="UI/BattleCoopPage" unique_id=2074080882]
 
-[node name="UI_BattleOneOnOnePage_OneOnOneRopeContainer#OneOnOneLeftHandle" type="TextureRect" parent="." unique_id=1246444272]
+[node name="CoopRopeCenter" type="TextureRect" parent="UI/BattleCoopPage/CoopRopeContainer" unique_id=916897415]
 
-[node name="UI_BattleOneOnOnePage_OneOnOneRopeContainer#OneOnOneRightHandle" type="TextureRect" parent="." unique_id=1246444273]
+[node name="CoopLeftHandle" type="TextureRect" parent="UI/BattleCoopPage/CoopRopeContainer" unique_id=1105850193]
 
-[node name="UI_BattleOneOnOnePage#OneOnOneScoreboard" type="HBoxContainer" parent="." unique_id=1246444274]
+[node name="CoopRightHandle" type="TextureRect" parent="UI/BattleCoopPage/CoopRopeContainer" unique_id=1214012306]
 
-[node name="UI_BattleOneOnOnePage_OneOnOneScoreboard#OneOnOnePlayer1Score" type="Label" parent="." unique_id=1246444275]
-text = "Player 1: 0"
+[node name="CoopScoreboard" type="HBoxContainer" parent="UI/BattleCoopPage" unique_id=1011162678]
+layout_mode = 0
 
-[node name="UI_BattleOneOnOnePage_OneOnOneScoreboard#OneOnOnePlayer2Score" type="Label" parent="." unique_id=1246444276]
-text = "Player 2: 0"
-
-[node name="UI_BattleOneOnOnePage#OneOnOneTapPrompt" type="Label" parent="." unique_id=1246444277]
-text = "Mash the key or click fast!"
-
-[node name="UI_BattleOneOnOnePage#OneOnOneNetworkStatus" type="Label" parent="." unique_id=1246444278]
-text = "Network: Disconnected"
-
-[node name="UI#BattleCoopPage" type="Control" parent="." unique_id=1246444279]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-
-[node name="UI_BattleCoopPage#BattleCoopBackground" type="TextureRect" parent="." unique_id=1246444280]
-
-[node name="UI_BattleCoopPage#CoopRopeContainer" type="Node2D" parent="." unique_id=1246444281]
-
-[node name="UI_BattleCoopPage_CoopRopeContainer#CoopRopeCenter" type="TextureRect" parent="." unique_id=1246444282]
-
-[node name="UI_BattleCoopPage_CoopRopeContainer#CoopLeftHandle" type="TextureRect" parent="." unique_id=1246444283]
-
-[node name="UI_BattleCoopPage_CoopRopeContainer#CoopRightHandle" type="TextureRect" parent="." unique_id=1246444284]
-
-[node name="UI_BattleCoopPage#CoopScoreboard" type="HBoxContainer" parent="." unique_id=1246444285]
-
-[node name="UI_BattleCoopPage_CoopScoreboard#CoopPlayerScore" type="Label" parent="." unique_id=1246444286]
+[node name="CoopPlayerScore" type="Label" parent="UI/BattleCoopPage/CoopScoreboard" unique_id=2016308004]
+layout_mode = 2
 text = "Team Score: 0"
 
-[node name="UI_BattleCoopPage#CoopTapPrompt" type="Label" parent="." unique_id=1246444287]
+[node name="CoopTapPrompt" type="Label" parent="UI/BattleCoopPage" unique_id=199379655]
+layout_mode = 0
 text = "Work together to pull!"
 
-[node name="UI_BattleCoopPage#CoopNetworkStatus" type="Label" parent="." unique_id=1246444288]
+[node name="CoopNetworkStatus" type="Label" parent="UI/BattleCoopPage" unique_id=526087831]
+layout_mode = 0
 text = "Network: Disconnected"
 
-[node name="Node2D#GameState" type="Node2D" parent="." unique_id=1329569328]
+[node name="FreeForAllMatch" type="Node2D" parent="UI/BattleCoopPage" unique_id=369800169]
+
+[node name="PlayerContainer" type="Node2D" parent="UI/BattleCoopPage/FreeForAllMatch" unique_id=713801662]
+
+[node name="RemotePlayerContainer" type="Node2D" parent="UI/BattleCoopPage/FreeForAllMatch" unique_id=210193071]
+
+[node name="GameState" type="Node2D" parent="." unique_id=709633324]
