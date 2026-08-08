@@ -88,9 +88,9 @@ text = "Instructions
 
 [node name="BtnSingleplayer" type="Button" parent="UI/MainPage" unique_id=63838428]
 layout_mode = 0
-offset_left = 445.0
+offset_left = 430.0
 offset_top = 413.0
-offset_right = 713.0
+offset_right = 722.0
 offset_bottom = 484.0
 theme_override_font_sizes/font_size = 44
 text = "Singleplayer"
@@ -123,13 +123,13 @@ color = Color(0.187718, 0.39934263, 0.76871437, 1)
 
 [node name="LoadingText" type="Label" parent="UI/LoadingPage" unique_id=85363548]
 layout_mode = 0
-offset_left = 437.0
-offset_top = 226.0
-offset_right = 716.0
-offset_bottom = 309.0
+offset_left = 354.0
+offset_top = 228.0
+offset_right = 842.0
+offset_bottom = 311.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
-text = "Loading..."
+text = "Finding players..."
 
 [node name="LoadingBar" type="ProgressBar" parent="UI/LoadingPage" unique_id=132121367]
 layout_mode = 0
@@ -156,7 +156,15 @@ offset_right = 528.0
 offset_bottom = 355.0
 text = "Players found 1/2"
 
+[node name="ConnectionFailedDialog" type="AcceptDialog" parent="UI" unique_id=884422108]
+oversampling_override = 1.0
+title = "Error"
+position = Vector2i(0, 36)
+size = Vector2i(152, 100)
+dialog_text = "Connection failed"
+
 [node name="BattleOneOnOnePage" type="Control" parent="UI" unique_id=634685410]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -207,9 +215,9 @@ texture = ExtResource("4_kdubu")
 [node name="OneOnOnePlayer1Score" type="Label" parent="UI/BattleOneOnOnePage" unique_id=175887646]
 layout_mode = 0
 offset_left = 11.0
-offset_top = 3.0
+offset_top = 7.0
 offset_right = 91.0
-offset_bottom = 26.0
+offset_bottom = 62.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Red: 0"
@@ -226,13 +234,14 @@ text = "Blue: 0"
 
 [node name="Countdown" type="Label" parent="UI/BattleOneOnOnePage" unique_id=1370122555]
 layout_mode = 0
-offset_left = 555.0
+offset_left = 376.0
 offset_top = 189.0
-offset_right = 595.0
+offset_right = 776.0
 offset_bottom = 272.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "3"
+horizontal_alignment = 1
 
 [node name="BattleCoopPage" type="Control" parent="UI" unique_id=66248515]
 visible = false
@@ -260,28 +269,64 @@ anchor_bottom = 1.0
 grow_vertical = 2
 color = Color(0.187718, 0.39934263, 0.76871437, 1)
 
-[node name="CoopRopeContainer" type="Node2D" parent="UI/BattleCoopPage" unique_id=2074080882]
+[node name="CoopRopes" type="Node2D" parent="UI/BattleCoopPage" unique_id=884422101]
 
-[node name="CoopRopeCenter" type="TextureRect" parent="UI/BattleCoopPage/CoopRopeContainer" unique_id=916897415]
+[node name="Rope1" type="Sprite2D" parent="UI/BattleCoopPage/CoopRopes" unique_id=884422102]
+position = Vector2(598, 340.99997)
+scale = Vector2(0.28651568, 0.23750018)
+texture = ExtResource("2_0hol4")
 
-[node name="CoopLeftHandle" type="TextureRect" parent="UI/BattleCoopPage/CoopRopeContainer" unique_id=1105850193]
+[node name="Cursor1" type="Sprite2D" parent="UI/BattleCoopPage/CoopRopes" unique_id=884422103]
+position = Vector2(850.00006, 373)
+scale = Vector2(0.106981985, 0.106981985)
+texture = ExtResource("3_q6r6c")
 
-[node name="CoopRightHandle" type="TextureRect" parent="UI/BattleCoopPage/CoopRopeContainer" unique_id=1214012306]
+[node name="Cursor2" type="Sprite2D" parent="UI/BattleCoopPage/CoopRopes" unique_id=884422104]
+position = Vector2(303.99988, 372)
+scale = Vector2(0.10641902, 0.10641902)
+texture = ExtResource("4_kdubu")
 
-[node name="CoopScoreboard" type="HBoxContainer" parent="UI/BattleCoopPage" unique_id=1011162678]
+[node name="CoopRedScore" type="Label" parent="UI/BattleCoopPage" unique_id=884422105]
 layout_mode = 0
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Red: 0"
 
-[node name="CoopPlayerScore" type="Label" parent="UI/BattleCoopPage/CoopScoreboard" unique_id=2016308004]
-layout_mode = 2
-text = "Team Score: 0"
+[node name="CoopBlueScore" type="Label" parent="UI/BattleCoopPage" unique_id=884422106]
+layout_mode = 0
+offset_left = 1005.0
+offset_top = 7.0
+offset_right = 1135.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Blue: 0"
+
+[node name="CoopCountdown" type="Label" parent="UI/BattleCoopPage" unique_id=884422107]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 189.0
+offset_right = 776.0
+offset_bottom = 272.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "3"
+horizontal_alignment = 1
 
 [node name="CoopTapPrompt" type="Label" parent="UI/BattleCoopPage" unique_id=199379655]
 layout_mode = 0
+offset_left = 341.0
+offset_top = 576.0
+offset_right = 811.0
+offset_bottom = 617.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "Work together to pull!"
-
-[node name="CoopNetworkStatus" type="Label" parent="UI/BattleCoopPage" unique_id=526087831]
-layout_mode = 0
-text = "Network: Disconnected"
+horizontal_alignment = 1
 
 [node name="FreeForAllMatch" type="Node2D" parent="UI/BattleCoopPage" unique_id=369800169]
 
