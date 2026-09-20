@@ -1,0 +1,17 @@
+[Unit]
+Description=Auth Service (Flask) for Tug of War
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/auth_service
+ExecStart=/usr/bin/python3 -m flask run --host=0.0.0.0 --port=8090
+Environment=AUTH_DB_PATH=/opt/auth_service/auth.db
+Environment=AUTH_JWT_SECRET=SET_A_RANDOM_SECRET_HERE
+Environment=FLASK_APP=app
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
