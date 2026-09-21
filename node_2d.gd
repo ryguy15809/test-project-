@@ -26,8 +26,10 @@ const AUTH_ENABLED := false  # TODO: flip to true to re-enable login + stat savi
 
 @export var server_port: int = 8080
 @export var max_players: int = 32
-@export var server_url: String = "wss://tugofwar.strangled.net/ws"
-@export var auth_url: String = "https://tugofwar.strangled.net/api"
+# In the browser these are derived from the page's own origin (see _derive_origin_urls),
+# so no domain is hardcoded. Set them explicitly only for desktop builds.
+@export var server_url: String = ""
+@export var auth_url: String = ""
 
 @onready var main_page = $UI/MainPage
 @onready var login_page = $UI/LoginPage
@@ -77,6 +79,8 @@ var _guest_losses: int = 0
 
 
 func _ready() -> void:
+	if OS.has_feature("web"):
+		_derive_origin_urls()
 	multiplayer.peer_connected.connect(_on_network_peer_connected)
 	multiplayer.peer_disconnected.connect(_on_network_peer_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
@@ -109,6 +113,19 @@ func _ready() -> void:
 		$UI/MainPage/BtnAccount.visible = false
 
 	show_main_page()
+
+
+# Derive the server/auth URLs from the browser's own origin, so the game works
+# from any domain without hardcoding one. No-op outside the browser (desktop
+# keeps the @export defaults) or if detection fails.
+func _derive_origin_urls() -> void:
+	var protocol := str(JavaScriptBridge.eval("window.location.protocol"))  # "https:" or "http:"
+	var host := str(JavaScriptBridge.eval("window.location.host"))          # "example.com" (or with :port)
+	if host.is_empty():
+		return
+	var is_https := protocol == "https:"
+	server_url = ("wss://" if is_https else "ws://") + host + "/ws"
+	auth_url = ("https://" if is_https else "http://") + host + "/api"
 
 
 func _make_button_style(bg: Color, bordered: bool) -> StyleBoxFlat:
