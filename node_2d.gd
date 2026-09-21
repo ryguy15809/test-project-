@@ -27,7 +27,7 @@ const AUTH_ENABLED := false  # TODO: flip to true to re-enable login + stat savi
 @export var server_port: int = 8080
 @export var max_players: int = 32
 @export var server_url: String = "wss://tugofwar.strangled.net/ws"
-@export var auth_url: String = "http://141.148.32.59:8090"
+@export var auth_url: String = "https://tugofwar.strangled.net/api"
 
 @onready var main_page = $UI/MainPage
 @onready var login_page = $UI/LoginPage

@@ -2,9 +2,8 @@
 .godot/
 /android/
 
-# Build artifacts
+# Build artifacts (Windows .exe only; web/ is committed so the VPS can deploy from git)
 /exports/
-/web/
 
 # Python (auth_service)
 __pycache__/
